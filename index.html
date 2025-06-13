@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaseFlick Deliveries - Your Trusted Delivery Partner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;800&display=swap">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.015em;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      letter-spacing: -0.025em;
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #7c3aed, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hover-scale {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+    
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #7c3aed, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .user-select-none {
+      user-select: none;
+    }
+    
+    .user-select-text {
+      user-select: text;
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-link:hover {
+      background: rgba(124, 58, 237, 0.1);
+    }
+
+    .mobile-menu-link i {
+      width: 24px;
+      margin-right: 1rem;
+      color: #7c3aed;
+    }
+
+    .mobile-menu-footer {
+      position: absolute;
+      bottom: 2rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #7c3aed;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    /* Partner Carousel */
+    .partner-carousel {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      padding: 2rem 0;
+    }
+
+    .partner-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .partner-item {
+      flex: 0 0 auto;
+      width: 200px;
+      margin: 0 1rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 via-white to-orange-100 text-gray-900 smooth-scroll">
+  <!-- Navigation -->
+  <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="flex-shrink-0 flex items-center">
+            <span class="text-2xl font-bold text-purple-700">BaseFlick</span>
+            <span class="text-2xl font-bold text-orange-500">Deliveries</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Home</a>
+          <a href="#about" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">About</a>
+          <a href="#services" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Services</a>
+          <a href="#careers" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Careers</a>
+          <a href="#contact" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Contact</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-purple-700 transition-colors duration-300">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold">
+          <span class="text-purple-700">BaseFlick</span>
+          <span class="text-orange-500">Deliveries</span>
+        </div>
+        <button id="close-menu" class="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
+          <i class="fas fa-times text-2xl text-gray-700"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="flex flex-col">
+      <a href="#home" class="mobile-menu-link">
+        <i class="fas fa-home"></i>
+        <span class="text-lg font-medium">Home</span>
+      </a>
+      <a href="#about" class="mobile-menu-link">
+        <i class="fas fa-info-circle"></i>
+        <span class="text-lg font-medium">About</span>
+      </a>
+      <a href="#services" class="mobile-menu-link">
+        <i class="fas fa-box"></i>
+        <span class="text-lg font-medium">Services</span>
+      </a>
+      <a href="#careers" class="mobile-menu-link">
+        <i class="fas fa-briefcase"></i>
+        <span class="text-lg font-medium">Careers</span>
+      </a>
+      <a href="#contact" class="mobile-menu-link">
+        <i class="fas fa-envelope"></i>
+        <span class="text-lg font-medium">Contact</span>
+      </a>
+    </div>
+
+    <div class="mobile-menu-footer">
+      <div class="text-center text-gray-600">
+        <p>Connect with us</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="pt-32 pb-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-6xl md:text-7xl font-extrabold mb-8 gradient-text tracking-tight">Your Trusted Delivery Partner</h1>
+      <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">Fast, reliable, and secure delivery services for individuals and businesses. We deliver your packages with care and precision.</p>
+      <div class="flex flex-col md:flex-row justify-center gap-6">
+        <a href="#services" class="bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1">
+          Explore Services
+        </a>
+        <a href="#careers" class="bg-white text-purple-700 font-semibold px-8 py-4 rounded-lg shadow-lg border-2 border-purple-700 hover:bg-purple-50 transition-all duration-300 transform hover:-translate-y-1">
+          Join Our Team
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">About BaseFlick Deliveries</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <img src="images/john.jpg" alt="BaseFlick Delivery Service" class="rounded-2xl shadow-xl w-full h-auto object-cover">
+          <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
+            <div class="text-2xl font-bold text-purple-700">Your Trusted Partner</div>
+            <div class="text-gray-600">Since 2014</div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <p class="text-lg text-gray-700">BaseFlick Deliveries is a leading delivery service provider committed to excellence in logistics and customer satisfaction. We understand the importance of timely and secure deliveries in today's fast-paced world.</p>
+          <p class="text-lg text-gray-700">Our mission is to provide reliable, efficient, and cost-effective delivery solutions that meet the unique needs of our clients. With our extensive network and experienced team, we ensure your packages reach their destination safely and on time.</p>
+          <div class="grid grid-cols-3 gap-6 mt-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-purple-700">10+</div>
+              <div class="text-gray-600">Years of Excellence</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-orange-500">50k+</div>
+              <div class="text-gray-600">Happy Customers</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-purple-700">100+</div>
+              <div class="text-gray-600">Countries Served</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet Our CEO Section -->
+  <section class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Meet Our CEO</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <img src="images/ceo.jpeg" alt="Mr. Ekilu Samson - CEO of BaseFlick Deliveries" class="rounded-2xl shadow-xl w-full h-auto object-cover">
+          <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
+            <div class="text-2xl font-bold text-purple-700">Mr. Ekilu Samson</div>
+            <div class="text-gray-600">CEO & Founder</div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <h3 class="text-3xl font-bold text-purple-700">The Big Brain Behind BaseFlick Deliveries</h3>
+          <p class="text-lg text-gray-700">With over 15 years of experience in logistics and supply chain management, Mr. Ekilu Samson has revolutionized the delivery industry with his innovative approach and customer-centric vision.</p>
+          <p class="text-lg text-gray-700">His leadership has transformed BaseFlick Deliveries from a small startup into a trusted name in the delivery industry, serving customers across multiple countries with reliability and excellence.</p>
+          <div class="mt-8">
+            <a href="#contact" class="inline-block bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition transform hover:-translate-y-1">
+              Connect with Our CEO
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Our Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-purple-100 via-white to-orange-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl text-purple-700 mb-6">
+            <i class="fas fa-box"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Package Delivery</h3>
+          <p class="text-gray-700">Fast and secure delivery of packages of all sizes. We handle your items with care and ensure timely delivery.</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-100 via-white to-orange-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl text-purple-700 mb-6">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Express Delivery</h3>
+          <p class="text-gray-700">Urgent delivery services for time-sensitive packages. We prioritize speed without compromising safety.</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-100 via-white to-orange-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl text-purple-700 mb-6">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">International Shipping</h3>
+          <p class="text-gray-700">Global delivery solutions with customs clearance and tracking services for international shipments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Coverage Section -->
+  <section id="coverage" class="py-20 px-4 fade-in bg-gradient-to-br from-purple-50 to-orange-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Our Coverage Areas</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-purple-700 mb-6">Local Delivery</h3>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-map-marker-alt text-purple-700 mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-900">Kampala Metropolitan Area</h4>
+                <p class="text-gray-700">Covering all major districts and surrounding areas</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-clock text-purple-700 mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-900">Delivery Hours</h4>
+                <p class="text-gray-700">Sunday - Friday: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-purple-700 mb-6">International Shipping</h3>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-globe text-purple-700 mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-900">Global Coverage</h4>
+                <p class="text-gray-700">Shipping to major cities worldwide</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-box text-purple-700 mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-900">Package Types</h4>
+                <p class="text-gray-700">Documents, parcels, and cargo shipments</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans Section -->
+  <section id="pricing" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Our Pricing Plans</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale">
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Standard Delivery</h3>
+          <div class="text-3xl font-bold text-gray-900 mb-6">From $10</div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Same-day delivery</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Package protection</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Basic insurance</span>
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300">
+            Get Started
+          </a>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale border-2 border-purple-700">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-700 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            Most Popular
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Express Delivery</h3>
+          <div class="text-3xl font-bold text-gray-900 mb-6">From $20</div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Priority handling</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Extended insurance</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Dedicated support</span>
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300">
+            Get Started
+          </a>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale">
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">International Shipping</h3>
+          <div class="text-3xl font-bold text-gray-900 mb-6">Custom Quote</div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Global coverage</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Customs clearance</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fas fa-check text-green-500"></i>
+              <span class="text-gray-700">Premium support</span>
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300">
+            Get Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section id="partners" class="py-20 px-4 bg-gradient-to-br from-purple-50 to-orange-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Our Trusted Partners</h2>
+      <p class="text-xl text-gray-700 text-center mb-12">Proudly partnering with Uganda's leading businesses</p>
+      
+      <div class="partner-carousel">
+        <div class="partner-track">
+          <div class="partner-item">
+            <img src="images/partners/safaricom.jpg" alt="Safaricom" class="w-full h-16 object-contain">
+            <h3 class="text-center mt-2 font-semibold">Safaricom</h3>
+          </div>
+          <div class="partner-item">
+            <img src="images/partners/airtel.jpg" alt="Airtel" class="w-full h-16 object-contain">
+            <h3 class="text-center mt-2 font-semibold">Airtel</h3>
+          </div>
+          <div class="partner-item">
+            <img src="images/partners/centinary.jpg" alt="Centenary Bank" class="w-full h-16 object-contain">
+            <h3 class="text-center mt-2 font-semibold">Centenary Bank</h3>
+          </div>
+          <div class="partner-item">
+            <img src="images/partners/stanbic.jpg" alt="Stanbic Bank" class="w-full h-16 object-contain">
+            <h3 class="text-center mt-2 font-semibold">Stanbic Bank</h3>
+          </div>
+          <div class="partner-item">
+            <img src="images/partners/dfcu.jpg" alt="DFCU Bank" class="w-full h-16 object-contain">
+            <h3 class="text-center mt-2 font-semibold">DFCU Bank</h3>
+          </div>
+          <div class="partner-item">
+            <img src="images/partners/absa.jpg" alt="Absa Bank" class="w-full h-16 object-contain">
+            <h3 class="text-center mt-2 font-semibold">Absa Bank</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <h3 class="text-3xl font-bold text-center text-purple-700 mb-12">Why Partner With Us?</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+            <div class="text-4xl text-purple-700 mb-4">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-3">Reliable Service</h4>
+            <p class="text-gray-700">We deliver consistent, on-time service with a proven track record of excellence in Uganda's delivery market.</p>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+            <div class="text-4xl text-purple-700 mb-4">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-3">Nationwide Coverage</h4>
+            <p class="text-gray-700">Extensive delivery network covering all major cities and towns across Uganda, ensuring your packages reach every corner.</p>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+            <div class="text-4xl text-purple-700 mb-4">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-900 mb-3">Growth Potential</h4>
+            <p class="text-gray-700">Partner with a growing company that's expanding its services and market presence across Uganda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a href="#contact" class="inline-block bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1">
+          Become a Partner
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">What Our Clients Say</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-6">"BaseFlick Deliveries has been our trusted partner for years. Their reliability and professionalism are unmatched in the industry."</p>
+          <div class="flex items-center">
+            <img src="images/client1.jpg" alt="Client" class="w-12 h-12 rounded-full object-cover">
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
+              <p class="text-gray-600">Business Owner</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-6">"The team at BaseFlick goes above and beyond to ensure our packages are delivered safely and on time. Highly recommended!"</p>
+          <div class="flex items-center">
+            <img src="images/client2.jpg" alt="Client" class="w-12 h-12 rounded-full object-cover">
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-900">Michael Chen</h4>
+              <p class="text-gray-600">E-commerce Manager</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-6">"Their international shipping service is exceptional. They handle customs clearance efficiently and keep us updated throughout the process."</p>
+          <div class="flex items-center">
+            <img src="images/client3.jpg" alt="Client" class="w-12 h-12 rounded-full object-cover">
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-900">Emma Thompson</h4>
+              <p class="text-gray-600">Import/Export Specialist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 px-4 fade-in bg-gradient-to-br from-purple-50 to-orange-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Frequently Asked Questions</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-xl font-bold text-purple-700 mb-4">Shipping & Delivery</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">What areas do you deliver to?</h4>
+              <p class="text-gray-700">We deliver to over 100 countries worldwide, with extensive coverage in major cities and regions.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">How long does delivery take?</h4>
+              <p class="text-gray-700">Delivery times vary based on the service selected. Local deliveries typically take 1-2 days, while international shipments may take 3-7 business days.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Do you offer same-day delivery?</h4>
+              <p class="text-gray-700">Yes, we offer same-day delivery for eligible locations and packages. Contact us for availability in your area.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-xl font-bold text-purple-700 mb-4">Pricing & Services</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">How are shipping costs calculated?</h4>
+              <p class="text-gray-700">Shipping costs are based on package weight, dimensions, destination, and selected service level.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Do you offer bulk shipping discounts?</h4>
+              <p class="text-gray-700">Yes, we offer special rates for bulk shipments and regular customers. Contact our sales team for custom quotes.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">What payment methods do you accept?</h4>
+              <p class="text-gray-700">We accept all major credit cards, PayPal, bank transfers, and mobile money payments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog/News Section -->
+  <section id="blog" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Latest News & Updates</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale">
+          <img src="images/blog1.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="text-sm text-purple-700 mb-2">March 15, 2024</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Expanding Our Network to New Regions</h3>
+            <p class="text-gray-700 mb-4">We're excited to announce our expansion into new territories, bringing our reliable delivery services to more customers.</p>
+            <a href="#" class="text-purple-700 font-semibold hover:text-purple-600">Read More →</a>
+          </div>
+        </article>
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale">
+          <img src="images/blog2.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="text-sm text-purple-700 mb-2">March 10, 2024</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">New Tracking Features Launched</h3>
+            <p class="text-gray-700 mb-4">Our enhanced tracking system now provides real-time updates and estimated delivery times for all shipments.</p>
+            <a href="#" class="text-purple-700 font-semibold hover:text-purple-600">Read More →</a>
+          </div>
+        </article>
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale">
+          <img src="images/blog3.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="text-sm text-purple-700 mb-2">March 5, 2024</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Sustainability Initiatives</h3>
+            <p class="text-gray-700 mb-4">Learn about our new eco-friendly packaging options and carbon-neutral delivery initiatives.</p>
+            <a href="#" class="text-purple-700 font-semibold hover:text-purple-600">Read More →</a>
+          </div>
+        </article>
+      </div>
+      <div class="text-center mt-12">
+        <a href="#" class="inline-block bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1">
+          View All News
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Order Section -->
+  <section id="how-to-order" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">How to Order</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <span class="text-2xl font-bold text-purple-700">1</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-2">Contact Us</h3>
+          <p class="text-gray-700">Reach out through our website, phone, or email to discuss your delivery needs.</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <span class="text-2xl font-bold text-purple-700">2</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-2">Get a Quote</h3>
+          <p class="text-gray-700">We'll provide you with a detailed quote based on your requirements.</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <span class="text-2xl font-bold text-purple-700">3</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-2">Confirm Order</h3>
+          <p class="text-gray-700">Review and confirm your order details and payment information.</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <span class="text-2xl font-bold text-purple-700">4</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-2">Track Delivery</h3>
+          <p class="text-gray-700">Monitor your package's journey with our real-time tracking system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Our Process</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="text-4xl text-purple-700 mb-6">
+            <i class="fas fa-box-open"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Package Collection</h3>
+          <p class="text-gray-700">We collect your package from your location or you can drop it at our nearest center.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="text-4xl text-purple-700 mb-6">
+            <i class="fas fa-truck-loading"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Secure Transportation</h3>
+          <p class="text-gray-700">Your package is transported in our secure vehicles with GPS tracking and insurance coverage.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="text-4xl text-purple-700 mb-6">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Delivery Confirmation</h3>
+          <p class="text-gray-700">We ensure safe delivery and provide confirmation with proof of delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Careers Section -->
+  <section id="careers" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-5xl font-extrabold text-center mb-12 text-purple-700 tracking-tight">Join Our Team</h2>
+      <p class="text-xl text-gray-700 text-center mb-12 max-w-3xl mx-auto">Be part of a dynamic team that's revolutionizing the delivery industry. We're always looking for talented individuals who share our passion for excellence.</p>
+      
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale">
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Why Work With Us?</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-purple-700 mt-1"></i>
+              <span class="text-gray-700">Competitive salary and benefits package</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-purple-700 mt-1"></i>
+              <span class="text-gray-700">Professional growth and development opportunities</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-purple-700 mt-1"></i>
+              <span class="text-gray-700">Modern work environment and tools</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-purple-700 mt-1"></i>
+              <span class="text-gray-700">Work-life balance and flexible schedules</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale">
+          <h3 class="text-2xl font-bold text-purple-700 mb-4">Current Openings</h3>
+          <div class="space-y-4">
+            <div class="border-b border-gray-200 pb-4">
+              <h4 class="font-semibold text-gray-900">Delivery Driver</h4>
+              <p class="text-gray-600">Full-time • Kampala</p>
+            </div>
+            <div class="border-b border-gray-200 pb-4">
+              <h4 class="font-semibold text-gray-900">Customer Service Representative</h4>
+              <p class="text-gray-600">Full-time • Remote</p>
+            </div>
+            <div class="border-b border-gray-200 pb-4">
+              <h4 class="font-semibold text-gray-900">Logistics Coordinator</h4>
+              <p class="text-gray-600">Full-time • Kampala</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#contact" class="inline-block bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1">
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 fade-in">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-extrabold text-center mb-12 text-purple-700">Contact Us</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-purple-700 mb-6">Get in Touch</h3>
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="text-purple-700 text-xl">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Visit Us</h4>
+                <p class="text-gray-600">123 Delivery Street, Kampala, Uganda</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="text-purple-700 text-xl">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Email Us</h4>
+                <p class="text-gray-600">info@baseflickdeliveries.com<br>support@baseflickdeliveries.com</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="text-purple-700 text-xl">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Call Us</h4>
+                <p class="text-gray-600">+256(779)761-211<br>+256(706)978-714</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="text-purple-700 text-xl">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Business Hours</h4>
+                <p class="text-gray-600">Sunday - Friday: 9:00 AM - 6:00 PM<br>Saturday: We Off</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-purple-700 mb-6">Send Us a Message</h3>
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+              <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+              <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+              <input type="text" id="subject" name="subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+              <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"></textarea>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="privacy" name="privacy" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+              <label for="privacy" class="ml-2 block text-sm text-gray-700">
+                I agree to the <a href="#" class="text-purple-600 hover:text-purple-500">Privacy Policy</a>
+              </label>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-purple-700 to-orange-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-purple-700 transition transform hover:-translate-y-1">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-8 md:mb-0">
+          <div class="text-2xl font-bold">
+            <span class="text-purple-700">BaseFlick</span>
+            <span class="text-orange-500">Deliveries</span>
+          </div>
+          <p class="text-gray-600 mt-2">Your trusted delivery partner since 2014</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition">
+            <i class="fab fa-facebook text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition">
+            <i class="fab fa-twitter text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition">
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-200 text-center text-gray-600">
+        <p>&copy; 2024 BaseFlick Deliveries. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-in').forEach((element) => {
+      observer.observe(element);
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+  <script src="security.js"></script>
+</body>
+</html> 
