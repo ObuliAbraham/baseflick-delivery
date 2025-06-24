@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services | Baseflick Express</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,31 +13,30 @@
     body { font-family: 'Inter', sans-serif; }
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
     .fade-in.visible { opacity: 1; transform: none; }
+    .service-card { transition: all 0.3s ease; }
+    .service-card:hover { transform: translateY(-5px); }
   </style>
 </head>
-<body class="bg-white text-gray-900">
-  <!-- Navigation (same as index.html) -->
+<body class="bg-gradient-to-br from-purple-50 via-white to-orange-50 text-gray-900">
+  <!-- Navigation -->
   <nav class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <span class="text-2xl font-bold text-purple-700">Base</span>
-        <span class="text-2xl font-bold text-orange-500">Flick</span>
-        <span class="text-2xl font-bold text-gray-700">Deliveries</span>
+      <div class="flex items-center gap-2">
+        <img src="images/logo.png" alt="Baseflick Express Logo" class="h-14 w-14 object-contain mr-2" />
+        <span class="text-2xl font-bold text-purple-700">Baseflick</span>
+        <span class="text-2xl font-bold text-orange-500">Express</span>
       </div>
       <ul class="hidden md:flex space-x-8 font-semibold">
         <li><a href="index.html#services" class="hover:text-purple-700 transition">Services</a></li>
         <li><a href="index.html#guide" class="hover:text-purple-700 transition">How to Order</a></li>
         <li><a href="index.html#process" class="hover:text-purple-700 transition">Process</a></li>
-        <li><a href="index.html#comparison" class="hover:text-purple-700 transition">Comparison</a></li>
         <li><a href="index.html#testimonials" class="hover:text-purple-700 transition">Testimonials</a></li>
         <li><a href="index.html#faq" class="hover:text-purple-700 transition">FAQ</a></li>
         <li><a href="index.html#contact" class="hover:text-purple-700 transition">Contact</a></li>
         <li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
       </ul>
       <button class="md:hidden text-purple-700 focus:outline-none" id="menu-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+        <i class="fas fa-bars text-2xl"></i>
       </button>
     </div>
     <div class="md:hidden px-4 pb-4 hidden" id="mobile-menu">
@@ -44,7 +44,6 @@
         <li><a href="index.html#services" class="block hover:text-purple-700 transition">Services</a></li>
         <li><a href="index.html#guide" class="block hover:text-purple-700 transition">How to Order</a></li>
         <li><a href="index.html#process" class="block hover:text-purple-700 transition">Process</a></li>
-        <li><a href="index.html#comparison" class="block hover:text-purple-700 transition">Comparison</a></li>
         <li><a href="index.html#testimonials" class="block hover:text-purple-700 transition">Testimonials</a></li>
         <li><a href="index.html#faq" class="block hover:text-purple-700 transition">FAQ</a></li>
         <li><a href="index.html#contact" class="block hover:text-purple-700 transition">Contact</a></li>
@@ -56,52 +55,164 @@
   <!-- Services Hero -->
   <section class="bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400 text-white py-20 px-4 text-center fade-in">
     <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Delivery Services</h1>
-    <p class="text-lg md:text-xl mb-8">Explore our range of reliable and flexible delivery solutions for every need.</p>
+    <p class="text-lg md:text-xl mb-8">Comprehensive delivery solutions tailored to your needs</p>
   </section>
 
-  <!-- Services Details -->
+  <!-- Services Categories -->
   <section class="max-w-7xl mx-auto py-16 px-4 fade-in">
-    <div class="grid md:grid-cols-2 gap-12">
-      <div class="bg-white rounded-lg shadow p-8 flex flex-col items-center hover:shadow-lg transition border-t-4 border-purple-700">
-        <div class="text-5xl mb-4">📦</div>
-        <h2 class="text-2xl font-bold mb-2 text-purple-700">Domestic Delivery</h2>
-        <p class="text-gray-700 mb-2">Fast, secure, and affordable delivery within your country. Perfect for individuals and small businesses.</p>
-        <ul class="list-disc pl-6 text-gray-600 text-left">
-          <li>1-3 day delivery</li>
-          <li>Door-to-door service</li>
-          <li>Real-time notifications</li>
-        </ul>
+    <!-- Personal and Household Services -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="text-3xl text-purple-700">
+          <i class="fas fa-home"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-purple-700">Personal and Household Services</h2>
       </div>
-      <div class="bg-white rounded-lg shadow p-8 flex flex-col items-center hover:shadow-lg transition border-t-4 border-orange-500">
-        <div class="text-5xl mb-4">🌍</div>
-        <h2 class="text-2xl font-bold mb-2 text-orange-500">International Shipping</h2>
-        <p class="text-gray-700 mb-2">Ship worldwide with ease. We handle customs, documentation, and ensure timely delivery.</p>
-        <ul class="list-disc pl-6 text-gray-600 text-left">
-          <li>Global coverage</li>
-          <li>Customs support</li>
-          <li>Tracking updates</li>
-        </ul>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-utensils"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Food And Groceries</h3>
+              <p class="text-gray-600">Quick and reliable delivery of food and grocery items to your doorstep.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-box-open"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Home And Personal Deliveries</h3>
+              <p class="text-gray-600">Secure delivery of personal items and packages to your home.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-running"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Errands</h3>
+              <p class="text-gray-600">Let us handle your daily errands while you focus on what matters.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-store"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Shop And Deliver</h3>
+              <p class="text-gray-600">We shop for your items and deliver them straight to you.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="bg-white rounded-lg shadow p-8 flex flex-col items-center hover:shadow-lg transition border-t-4 border-purple-700">
-        <div class="text-5xl mb-4">⚡</div>
-        <h2 class="text-2xl font-bold mb-2 text-purple-700">Express Options</h2>
-        <p class="text-gray-700 mb-2">When time is critical, choose our express delivery for next-day or same-day service in select areas.</p>
-        <ul class="list-disc pl-6 text-gray-600 text-left">
-          <li>Next-day delivery</li>
-          <li>Priority handling</li>
-          <li>Guaranteed timelines</li>
-        </ul>
+    </div>
+
+    <!-- Logistics and Courier Services -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="text-3xl text-orange-500">
+          <i class="fas fa-truck"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-orange-500">Logistics and Courier Services</h2>
       </div>
-      <div class="bg-white rounded-lg shadow p-8 flex flex-col items-center hover:shadow-lg transition border-t-4 border-orange-500">
-        <div class="text-5xl mb-4">🚚</div>
-        <h2 class="text-2xl font-bold mb-2 text-orange-500">Freight Services</h2>
-        <p class="text-gray-700 mb-2">Bulk and large shipments made easy. Flexible freight options for businesses of all sizes.</p>
-        <ul class="list-disc pl-6 text-gray-600 text-left">
-          <li>Pallet and container shipping</li>
-          <li>Regional and global freight</li>
-          <li>Custom logistics solutions</li>
-        </ul>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-orange-500"><i class="fas fa-exchange-alt"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Pick And Drop Services</h3>
+              <p class="text-gray-600">Efficient pickup and delivery services for your convenience.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-orange-500"><i class="fas fa-box"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Courier And Parcel Deliveries</h3>
+              <p class="text-gray-600">Safe and timely delivery of your parcels and documents.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-orange-500"><i class="fas fa-door-open"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Door To Door</h3>
+              <p class="text-gray-600">Direct delivery from sender to recipient's doorstep.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-orange-500"><i class="fas fa-building"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Corporate Deliveries</h3>
+              <p class="text-gray-600">Specialized delivery solutions for businesses and organizations.</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Specialized Delivery Services -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="text-3xl text-purple-700">
+          <i class="fas fa-star"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-purple-700">Specialized Delivery Services</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-briefcase-medical"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Medical Deliveries</h3>
+              <p class="text-gray-600">Priority delivery of medical supplies and prescriptions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-graduation-cap"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Academic Deliveries</h3>
+              <p class="text-gray-600">Reliable delivery of educational materials and supplies.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-shopping-cart"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">E-commerce & Shop Deliveries</h3>
+              <p class="text-gray-600">Integrated delivery solutions for online stores and retailers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-700">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl text-purple-700"><i class="fas fa-cogs"></i></span>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">Custom And Contract Services</h3>
+              <p class="text-gray-600">Tailored delivery solutions for specific business needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-purple-700 to-orange-500 text-white py-16 px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+      <p class="text-xl mb-8">Experience our premium delivery services today</p>
+      <a href="index.html#contact" class="bg-white text-purple-700 font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-orange-50 transition-all duration-300">
+        Contact Us Now
+      </a>
     </div>
   </section>
 
