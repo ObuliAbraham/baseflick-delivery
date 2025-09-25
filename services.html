@@ -3,54 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <title>Our Services | Baseflick Express</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700;800&display=swap">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
-    .fade-in.visible { opacity: 1; transform: none; }
-    .service-card { transition: all 0.3s ease; }
-    .service-card:hover { transform: translateY(-5px); }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.015em;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      letter-spacing: -0.025em;
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #7c3aed, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hover-scale {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+    
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #7c3aed, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .user-select-none { user-select: none; }
+    .user-select-text { user-select: text; }
+
+    /* Mobile Navigation */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-link:hover { background: rgba(124, 58, 237, 0.1); }
+    .mobile-menu-link i { width: 24px; margin-right: 1rem; color: #7c3aed; }
+
+    .mobile-menu-footer {
+      position: absolute;
+      bottom: 2rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+    .social-links a { color: #7c3aed; font-size: 1.5rem; transition: transform 0.3s ease; }
+    .social-links a:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) { .mobile-menu { display: block; } }
   </style>
+  <script src="dist/main.min.js" defer></script>
+  <script src="dist/security.min.js" defer></script>
 </head>
 <body class="bg-gradient-to-br from-purple-100 via-white to-orange-100 text-gray-900">
   <!-- Navigation -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <img src="images/logo.png" alt="Baseflick Express Logo" class="h-14 w-14 object-contain mr-2" />
-        <span class="text-2xl font-bold text-purple-700">Baseflick</span>
-        <span class="text-2xl font-bold text-orange-500">Express</span>
+  <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+            <img src="images/logo.png" alt="Baseflick Express Logo" class="h-14 w-14 object-contain mr-2" />
+            <span class="text-2xl font-bold text-purple-700">Baseflick</span>
+            <span class="text-2xl font-bold text-orange-500">Express</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html#home" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Home</a>
+          <a href="index.html#about" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">About</a>
+          <a href="index.html#services" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Services</a>
+          <a href="index.html#careers" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Careers</a>
+          <a href="index.html#contact" class="text-gray-700 hover:text-purple-700 font-medium transition-colors duration-300">Contact</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-purple-700 transition-colors duration-300">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
       </div>
-      <ul class="hidden md:flex space-x-8 font-semibold">
-        <li><a href="index.html#services" class="hover:text-purple-700 transition">Services</a></li>
-        <li><a href="index.html#guide" class="hover:text-purple-700 transition">How to Order</a></li>
-        <li><a href="index.html#process" class="hover:text-purple-700 transition">Process</a></li>
-        <li><a href="index.html#testimonials" class="hover:text-purple-700 transition">Testimonials</a></li>
-        <li><a href="index.html#faq" class="hover:text-purple-700 transition">FAQ</a></li>
-        <li><a href="index.html#contact" class="hover:text-purple-700 transition">Contact</a></li>
-        <li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
-      </ul>
-      <button class="md:hidden text-purple-700 focus:outline-none" id="menu-btn">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
-    </div>
-    <div class="md:hidden px-4 pb-4 hidden" id="mobile-menu">
-      <ul class="space-y-2 font-semibold">
-        <li><a href="index.html#services" class="block hover:text-purple-700 transition">Services</a></li>
-        <li><a href="index.html#guide" class="block hover:text-purple-700 transition">How to Order</a></li>
-        <li><a href="index.html#process" class="block hover:text-purple-700 transition">Process</a></li>
-        <li><a href="index.html#testimonials" class="block hover:text-purple-700 transition">Testimonials</a></li>
-        <li><a href="index.html#faq" class="block hover:text-purple-700 transition">FAQ</a></li>
-        <li><a href="index.html#contact" class="block hover:text-purple-700 transition">Contact</a></li>
-        <li><a href="about.html" class="hover:text-orange-500 transition">About</a></li>
-      </ul>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2 text-2xl font-bold">
+          <img src="images/logo.png" alt="Baseflick Express Logo" class="h-12 w-12 object-contain mr-2" />
+          <span class="text-purple-700">Baseflick</span>
+          <span class="text-orange-500">Express</span>
+        </div>
+        <button id="close-menu" class="p-2 rounded-full hover:bg-gray-100 transition-colors duration-300">
+          <i class="fas fa-times text-2xl text-gray-700"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="flex flex-col">
+      <a href="index.html#home" class="mobile-menu-link">
+        <i class="fas fa-home"></i>
+        <span class="text-lg font-medium">Home</span>
+      </a>
+      <a href="index.html#about" class="mobile-menu-link">
+        <i class="fas fa-info-circle"></i>
+        <span class="text-lg font-medium">About</span>
+      </a>
+      <a href="index.html#services" class="mobile-menu-link">
+        <i class="fas fa-box"></i>
+        <span class="text-lg font-medium">Services</span>
+      </a>
+      <a href="index.html#careers" class="mobile-menu-link">
+        <i class="fas fa-briefcase"></i>
+        <span class="text-lg font-medium">Careers</span>
+      </a>
+      <a href="index.html#contact" class="mobile-menu-link">
+        <i class="fas fa-envelope"></i>
+        <span class="text-lg font-medium">Contact</span>
+      </a>
+    </div>
+
+    <div class="mobile-menu-footer">
+      <div class="text-center text-gray-600">
+        <p>Connect with us</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Services Hero -->
   <section class="bg-gradient-to-r from-purple-700 to-orange-500 text-white py-20 px-4 text-center fade-in">
@@ -216,10 +363,74 @@
     </div>
   </section>
 
-  <footer class="bg-white border-t py-6 text-center text-gray-500 mt-8">
-    &copy; 2024 Baseflick Express. All rights reserved.
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-8 md:mb-0">
+          <div class="text-2xl font-bold">
+            <span class="text-purple-700">Baseflick</span>
+            <span class="text-orange-500">Express</span>
+          </div>
+          <p class="text-gray-600 mt-2">Your trusted delivery partner since 2014</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition"><i class="fab fa-twitter text-2xl"></i></a>
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition"><i class="fab fa-linkedin text-2xl"></i></a>
+          <a href="#" class="text-gray-600 hover:text-purple-700 transition"><i class="fab fa-instagram text-2xl"></i></a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-200 text-center text-gray-600">
+        <p>&copy; 2024 Baseflick Express Deliveries. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach((element) => { observer.observe(element); });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (closeMenuButton && mobileMenu) {
+      closeMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    mobileMenu?.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html> 
