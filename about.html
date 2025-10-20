@@ -9,10 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root { --brand-navy: #001B72; --brand-navy-dark: #02075D; --brand-orange: #F55413; --brand-sky: #E8F0FF; }
     body { font-family: 'Inter', sans-serif; }
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
     .fade-in.visible { opacity: 1; transform: none; }
-    .gradient-text { background: linear-gradient(135deg, #7c3aed 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gradient-text { background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-orange) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    /* Brand overrides for Tailwind utility classes */
+    .text-purple-700 { color: var(--brand-navy) !important; }
+    .bg-purple-700 { background-color: var(--brand-navy) !important; }
+    .bg-purple-100 { background-color: var(--brand-sky) !important; }
+    .hover\:text-purple-700:hover { color: var(--brand-navy-dark) !important; }
+    .from-purple-700 { --tw-gradient-from: var(--brand-navy) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0,27,114,0)) !important; }
+    .via-purple-500 { --tw-gradient-stops: var(--brand-navy), var(--brand-navy-dark), var(--tw-gradient-to, rgba(2,7,93,0)) !important; }
+    .to-orange-400, .to-orange-500 { --tw-gradient-to: var(--brand-orange) !important; }
+    .bg-gradient-to-br.from-purple-50.to-orange-50 { background-image: linear-gradient(to bottom right, #E8F0FF, #fff, #FFEDE5) !important; }
   </style>
 </head>
 <body class="bg-white text-gray-900">

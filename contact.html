@@ -9,9 +9,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root { --brand-navy: #001B72; --brand-navy-dark: #02075D; --brand-orange: #F55413; --brand-sky: #E8F0FF; }
     body { font-family: 'Inter', sans-serif; }
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
     .fade-in.visible { opacity: 1; transform: none; }
+    /* Brand overrides for utility classes */
+    .text-purple-700 { color: var(--brand-navy) !important; }
+    .bg-purple-700 { background-color: var(--brand-navy) !important; }
+    .hover\:bg-orange-500:hover { background-color: var(--brand-orange) !important; }
+    .from-purple-700, .via-purple-500 { --tw-gradient-from: var(--brand-navy) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0,27,114,0)) !important; }
+    .to-orange-400, .to-orange-500 { --tw-gradient-to: var(--brand-orange) !important; }
+    .focus\:ring-purple-700:focus { --tw-ring-color: var(--brand-navy) !important; }
   </style>
 </head>
 <body class="bg-white text-gray-900">
